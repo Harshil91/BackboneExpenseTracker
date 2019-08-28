@@ -7,6 +7,7 @@ const ExpensesView = Backbone.View.extend({
   },
   
   render(){
+    this.el.innerHTML = '';
     this.collection.forEach((expense) => {
       this.addExpense(expense);
     });
@@ -14,7 +15,9 @@ const ExpensesView = Backbone.View.extend({
   },
 
   addExpense(expense){
-    const expenseView = new ExpenseView();
+    const expenseView = new ExpenseView({
+      model: expense,
+    });
     expenseView.render();
 
     this.$el.append(expenseView.el);
