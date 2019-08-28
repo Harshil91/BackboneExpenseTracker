@@ -14,7 +14,9 @@ const FormView = Backbone.View.extend({
   
   addNewExpense(e){
     e.preventDefault();
-    alert('You Submitted the Form');
+    const description = this.el.description.value;
+    const amount = this.el.amount.value;
+    const date = this.el.date.value;
   },
 
   markup: `
