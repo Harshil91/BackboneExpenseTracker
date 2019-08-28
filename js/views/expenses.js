@@ -7,7 +7,16 @@ const ExpensesView = Backbone.View.extend({
   },
   
   render(){
-    this.el.innerHTML = this.collection.length;
+    this.collection.forEach((expense) => {
+      this.addExpense(expense);
+    });
     return this;
+  },
+
+  addExpense(expense){
+    const expenseView = new ExpenseView();
+    expenseView.render();
+
+    this.$el.append(expenseView.el);
   }
 });
