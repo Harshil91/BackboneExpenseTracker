@@ -1,4 +1,5 @@
-const formView = new FormView();
+const collection = new Expenses();
+const formView = new FormView({ collection });
 
 formView.render();
 

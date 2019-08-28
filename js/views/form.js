@@ -23,6 +23,8 @@ const FormView = Backbone.View.extend({
       amount,
       date,
     });
+
+    this.collection.add(expense);
   },
 
   markup: `
