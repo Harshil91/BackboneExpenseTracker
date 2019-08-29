@@ -3,8 +3,10 @@ const ExpenseView = Backbone.View.extend({
   className: 'expense',
 
   events: {
-    'click.delete': 'removeExpense',
-    'click.edit': 'setExpenseEditable',
+    'click .delete': 'removeExpense',
+    'click .edit': 'setExpenseEditable',
+    'reset .edit-expense-form': 'render',
+    'submit .edit-expense-form': 'saveEdit',
   },
 
   template: _.template(`
@@ -47,6 +49,24 @@ const ExpenseView = Backbone.View.extend({
 
   setExpenseEditable(){
     this.el.innerHTML = this.formTemplate(this.model.toJSON());
+  },
+
+  saveEdit(e){
+    e.preventDefault();
+
+    const form = e.currentTarget; 
+
+    const amount = form.amount.value;
+    const date = form.date.value;
+    const description = form.description.value;
+
+    this.model.set({
+      amount,
+      date,
+      description,
+    });
+
+    this.render();
   }
 
 });
