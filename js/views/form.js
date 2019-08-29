@@ -22,9 +22,15 @@ const FormView = Backbone.View.extend({
       description,
       amount,
       date,
+    }, {
+      validate: true,
     });
 
-    this.collection.add(expense);
+    if (expense.validationError){
+      alert(expense.validationError);
+    } else {
+      this.collection.add(expense);
+    }
   },
 
   markup: `
