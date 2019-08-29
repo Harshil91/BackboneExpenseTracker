@@ -5,6 +5,7 @@ const Expenses = Backbone.Collection.extend({
   initialize(){
     this.addFromDB();
     this.on('add', this.addToDB);
+    this.on('remove', this.removeFromDB);
   },
 
   addToDB(expense){
@@ -20,6 +21,10 @@ const Expenses = Backbone.Collection.extend({
 
       this.add(expense);
     }
-  }
+  },
 
+  removeFromDB(expense) {
+    const id = expense.get('id');
+    localStorage.removeItem(id);
+  }
 });

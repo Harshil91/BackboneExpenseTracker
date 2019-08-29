@@ -30,6 +30,7 @@ const ExpenseView = Backbone.View.extend({
   },
 
   removeExpense(){
+    this.collection.remove(this.model);
     this.remove();
   }
 
