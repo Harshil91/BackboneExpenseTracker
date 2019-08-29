@@ -33,6 +33,8 @@ const ExpenseView = Backbone.View.extend({
 
       <button type="reset">Cancel</button>
       <button type="submit">Save</button>
+
+      <div class="error hidden></div>
     </form>
   `),
 
@@ -64,9 +66,18 @@ const ExpenseView = Backbone.View.extend({
       amount,
       date,
       description,
+    }, {
+      validate: true,
     });
 
-    this.render();
-  }
+    if (this.model.validationError){
+      this.renderError(this.model.validationError);
+    } else {
+      this.render();
+    }
+  },
 
+  renderError(error){
+    this.$('.error').text(error).removeClass('hidden');
+  }
 });
