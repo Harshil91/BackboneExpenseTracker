@@ -3,6 +3,7 @@ const Expenses = Backbone.Collection.extend({
 
 
   initialize(){
+    this.addFromDB();
     this.on('add', this.addToDB);
   },
 
@@ -10,6 +11,15 @@ const Expenses = Backbone.Collection.extend({
     const id = expense.get('id');
 
     localStorage.setItem(id,JSON.stringify(expense));
+  },
+
+  addFromDB(){
+    for (let key in localStorage){
+      const expenseData = JSON.parse(localStorage.getItem(id));
+      const expense = new Expense(expenseData);
+
+      this.add(expense);
+    }
   }
 
 });
