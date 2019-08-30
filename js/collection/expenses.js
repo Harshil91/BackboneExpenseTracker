@@ -15,12 +15,12 @@ const Expenses = Backbone.Collection.extend({
   },
 
   addFromDB(){
-    for (let key in localStorage){
+    Object.keys(localStorage).forEach((id) => {
       const expenseData = JSON.parse(localStorage.getItem(id));
       const expense = new Expense(expenseData);
 
       this.add(expense);
-    }
+    });
   },
 
   removeFromDB(expense) {
