@@ -12,7 +12,8 @@ const Expense = Backbone.Model.extend({
   },
 
   validate(expense){
-    return this.validateAmount(expense.amount);
+    return this.validateAmount(expense.amount) || 
+           this.validateDate(expense.date);
   },
 
   validateAmount(amount){
@@ -21,6 +22,15 @@ const Expense = Backbone.Model.extend({
       !amount.match(/^\$?(\d*)(\.\d{0,2})?$/)
       ) {
       return 'Invalid amount';
+    }
+  },
+
+  validateDate(date){
+    if (
+      !date.match(/^\d{1,2}\/\d{1,2}\/\d{4}$/) || 
+      isNaN(Date.parse(date))
+    ) {
+      return 'Invalid Date';
     }
   }
 });
