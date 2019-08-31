@@ -11,4 +11,6 @@ expensesView.render();
 $('body').append(formView.el);
 $('body').append(expensesView.el);
 
+Backbone.history.start();
+
 
