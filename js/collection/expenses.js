@@ -26,5 +26,10 @@ const Expenses = Backbone.Collection.extend({
   removeFromDB(expense) {
     const id = expense.get('id');
     localStorage.removeItem(id);
+  },
+
+  changeSort(sortProperties){
+    const field = sortProperties.field;
+    const direction = sortProperties.direction;
   }
 });
