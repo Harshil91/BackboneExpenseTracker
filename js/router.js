@@ -5,6 +5,8 @@ const ExpensesRouter = Backbone.Router.extend({
   },
 
   sort(field, direction) {
-
+    if (direction === null){
+      direction = 'desc';
+    }
   }
 });
