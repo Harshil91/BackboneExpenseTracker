@@ -35,5 +35,16 @@ const Expenses = Backbone.Collection.extend({
     this.sortField = sortProperties.field;
     this.sortDirection = sortProperties.direction;
     this.sort();
-  }
+  },
+
+  comparator(expense){
+    let value;
+    if(this.sortField === 'date'){
+      value = new Date(expense.get('date')).getTime;
+    }
+
+
+    
+    return value; 
+  };
 });
