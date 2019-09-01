@@ -33,6 +33,7 @@ const Expenses = Backbone.Collection.extend({
 
   changeSort(sortProperties){
     this.sortField = sortProperties.field;
-    const direction = sortProperties.direction;
+    this.sortDirection = sortProperties.direction;
+    this.sort();
   }
 });
