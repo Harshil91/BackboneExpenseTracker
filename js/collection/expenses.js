@@ -1,6 +1,9 @@
 const Expenses = Backbone.Collection.extend({
   model: Expense,
 
+  sortDirection: 'desc',
+  sortField: 'date',
+
 
   initialize(){
     this.addFromDB();
@@ -29,7 +32,7 @@ const Expenses = Backbone.Collection.extend({
   },
 
   changeSort(sortProperties){
-    const field = sortProperties.field;
+    this.sortField = sortProperties.field;
     const direction = sortProperties.direction;
   }
 });
