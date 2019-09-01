@@ -41,10 +41,13 @@ const Expenses = Backbone.Collection.extend({
     let value;
     if(this.sortField === 'date'){
       value = new Date(expense.get('date')).getTime;
+    } else {
+      value = parseFloat(expense.get('amount'));
     }
 
-
-    
+    if (this.sortDirection === 'desc') {
+      value = value * -1;
+    }
     return value; 
-  };
+  }
 });
