@@ -18,10 +18,16 @@ const ExpensesView = Backbone.View.extend({
   `),
 
   initialize(){
-    this.listenTo(this.collection, 'add', this.render);
+    this.listenTo(this.collection, 'add sort', this.render);
   },
   
   render(){
+    const sortDirection = this.collection.sortDirection;
+    const oppositeDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+
+    const isSortedByDate = sortField === 'date';
+
+
     this.el.innerHTML = this.template({
       dateDirection: 'asc',
       amountDirection: 'asc',
